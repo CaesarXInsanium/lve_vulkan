@@ -3,21 +3,6 @@ project('VulkanEngine', 'c',
   version : '0.1',
   default_options : ['warning_level=3'])
 
-GLSLC= find_program('glslc')
-
-vertex = custom_target('vertex.spv',
-  output: 'vertex.spv',
-  input: 'shaders/simple_shader.vert',
-  command: [GLSLC, '@input', '@output@'],
-  install: false
-  )
-frag= custom_target('fragment.spv',
-  output: 'fragment.spv',
-  input: 'shaders/simple_frag.frag',
-  command: [GLSLC, '@input', '@output@'],
-  install: false
-  )
-
 build_args = [
   '-Wall',
   '-Werror',
@@ -28,7 +13,7 @@ SOURCES = [
   'src/main.c',
   'src/lve_window.c',
   'src/app.c',
-
+  'src/lve_pipeline.c'
   ]
 
 CGLM = dependency('cglm')
